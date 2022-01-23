@@ -137,7 +137,7 @@ const Product = () => {
     const handleClick = () => {
         //update cart => use Redux
         dispatch(
-            addProduct({product, quantity })
+            addProduct({...product, quantity, color, size })
         );
     };
     return (
