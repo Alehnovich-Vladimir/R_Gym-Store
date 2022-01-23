@@ -8,7 +8,8 @@ import { mobile } from "../responsive";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState} from "react";
 import { publicRequest }  from "../requestMethods";
-import axios from "axios";
+import { addProduct } from '../redux/cartRedux';
+import { useDispatch } from 'react-redux';
 
 
 const Container = styled.div``
@@ -113,13 +114,14 @@ const Product = () => {
     const [quantity, setQuantity] = useState(1);
     const [color, setColor] = useState("");
     const [size, setSize] = useState("");
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const getProduct = async () => {
             try {
                 const res = await publicRequest.get("/products/find/" + id);
                 setProduct(res.data)
-            } catch { }
+            } catch {}
         };
         getProduct();
     }, [id])
@@ -134,9 +136,10 @@ const Product = () => {
 
     const handleClick = () => {
         //update cart => use Redux
-        
-    }
-
+        dispatch(
+            addProduct({product, quantity })
+        );
+    };
     return (
         <Container>
             <Navbar />
