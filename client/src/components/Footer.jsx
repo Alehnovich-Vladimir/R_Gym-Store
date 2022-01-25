@@ -1,4 +1,5 @@
 import { Facebook, Instagram, MailOutline, Phone, Room, Telegram } from '@material-ui/icons';
+import EmailIcon from '@material-ui/icons/Email';
 import styled from 'styled-components';
 import { mobile } from '../responsive';
 
@@ -13,11 +14,16 @@ const Left = styled.div`
     padding: 20px;
 `
 
-const Logo = styled.h1`
-    
+const Logo = styled.img`
+    width: 200px;
+    height: auto;
+    object-fit: cover;
+    cursor: pointer;
 `
 const Desc = styled.p`
     margin: 20px 0px;
+    font-size: 16px;
+    padding-right: 150px;
 `
 const SocialContainer = styled.div`
     display: flex;
@@ -31,7 +37,7 @@ const SocialIcon = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 15px;
+    margin-right: 40px;
     cursor: pointer;
 `
 
@@ -41,19 +47,28 @@ const Center = styled.div`
     ${mobile({ display: "none"})}
 `
 
-const Title = styled.h3`
+const Title = styled.h2`
     margin-bottom: 30px;
 `
 const List = styled.ul`
     margin: 0;
     padding: 0;
+    font-size: 20px;
     list-style: none;
     display: flex;
     flex-wrap: wrap;
 `
 const ListItem = styled.li`
     width: 50%;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+
+    &:hover{
+        color: #01634df4;
+        font-weight: bold;
+        letter-spacing: 2px;
+        transition: all 1s ease;
+    }
 `
 
 const Right = styled.div`
@@ -64,8 +79,17 @@ const Right = styled.div`
 
 const ContactItem = styled.div`
     margin-bottom: 20px;
+    font-size: 20px;
     display: flex;
     align-items: center;
+    cursor: pointer;
+
+    &:hover{
+        color: #01634df4;
+        font-weight: bold;
+        letter-spacing: 2px;
+        transition: all 1s ease;
+    }
 `
 const Payment = styled.img`
     width: 50%;
@@ -75,26 +99,28 @@ const Footer = () => {
     return (
         <Container>
             <Left>
-                <Logo>LOGO</Logo>
+                <Logo src="https://i.ibb.co/c8Yr0GB/logo.jpg"/>
                 <Desc>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt officia quasi ea corrupti asperiores
                     repellendus voluptatum optio quae ab ipsum, aspernatur illum sit at quaerat minus inventore magni placeat quisquam.
-                    Ea, vitae. Et ea, aut animi quia id itaque. Ea sint  corporis quas fugit estnam amet beatae quam enim?
                 </Desc>
                 <SocialContainer>
-                    <SocialIcon color="E4405F">
-                        <Instagram />
-                    </SocialIcon>
                     <SocialIcon color="55ACEE">
                         <Telegram />
+                    </SocialIcon>
+                    <SocialIcon color="E4405F">
+                        <Instagram />
                     </SocialIcon>
                     <SocialIcon color="3B5999">
                         <Facebook />
                     </SocialIcon>
+                    <SocialIcon color="55ACEE">
+                        <EmailIcon />
+                    </SocialIcon>
                 </SocialContainer>
             </Left>
             <Center>
-                <Title>Useful Links</Title>
+                <Title>Useful Links :</Title>
                 <List>
                     <ListItem>Home</ListItem>
                     <ListItem>Cart</ListItem>
@@ -107,7 +133,7 @@ const Footer = () => {
                 </List>
             </Center>
             <Right>
-                <Title>Contact</Title>
+                <Title>Contact :</Title>
                 <ContactItem>
                     <Room style={{marginRight: "10px"}}/>Address
                 </ContactItem>

@@ -4,6 +4,7 @@ import Announcement from '../components/Announcement';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import { mobile } from '../responsive';
+import { useSelector } from 'react-redux';
 
 const Container = styled.div`
 
@@ -151,6 +152,7 @@ const Button = styled.button`
 `
 
 const Cart = () => {
+    const cart = useSelector(state=>state.cart)
     return (
         <Container>
             <Navbar />
@@ -167,51 +169,34 @@ const Cart = () => {
                 </Top>
                 <Bottom>
                     <Info>
-                        <Product>
+                        {cart.products.map(product=>(
+                            <Product>
                             <ProductDetail>
-                                <Image src="https://media.istockphoto.com/photos/training-shoe-on-white-with-drop-shadow-picture-id1266137581?k=20&m=1266137581&s=612x612&w=0&h=ubZslXbsgHPo0IsrxR1Ln7NV6ZheIpjde-mtgCuW1y4=" />
+                                <Image src={product.img} />
                                 <Details>
-                                    <ProductName><b>Product:</b> JESSIE THUNDER SHOES</ProductName>
-                                    <ProductId><b>ID:</b> 879857847</ProductId>
-                                    <ProductColor color="red" />
-                                    <ProductSize><b>Size:</b> 37.5</ProductSize>
+                                        <ProductName><b>Product:</b>{product.title}</ProductName>
+                                        <ProductId><b>ID:</b>{product._id}</ProductId>
+                                    <ProductColor color={product.color} />
+                                        <ProductSize><b>Size:</b>{product.size}</ProductSize>
                                     </Details>    
                             </ProductDetail>
                             <PriceDetail>
                                 <ProductAmountContainer>
                                     <Add />
-                                    <ProductAmount>2</ProductAmount>
+                                        <ProductAmount>{product.quantity}</ProductAmount>
                                     <Remove />
                                 </ProductAmountContainer>
-                                <ProductPrice>$ 30</ProductPrice>
+                                    <ProductPrice>$ {product.price * product.quantity}</ProductPrice>
                             </PriceDetail>
                         </Product>
+                        ))}
                         <Hr />
-                        <Product>
-                            <ProductDetail>
-                                <Image src="https://img.joomcdn.net/867d590311b205956db77754d6da4c35ba88a0bf_original.jpeg" />
-                                <Details>
-                                    <ProductName><b>Product:</b> GYMNASTIC LEOTARD</ProductName>
-                                    <ProductId><b>ID:</b> 879555847</ProductId>
-                                    <ProductColor color="black" />
-                                    <ProductSize><b>Size:</b> M</ProductSize>
-                                    </Details>    
-                            </ProductDetail>
-                            <PriceDetail>
-                                <ProductAmountContainer>
-                                    <Add />
-                                    <ProductAmount>1</ProductAmount>
-                                    <Remove />
-                                </ProductAmountContainer>
-                                <ProductPrice>$ 150</ProductPrice>
-                            </PriceDetail>
-                        </Product>
                     </Info>
                     <Summary>
                         <SummaryTitle>ORDER SUMMARY</SummaryTitle>
                         <SummaryItem>
                             <SummaryItemText>Subtotal</SummaryItemText>
-                            <SummaryItemPrice>$ 180</SummaryItemPrice>
+                            <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
                         </SummaryItem>
                         <SummaryItem>
                             <SummaryItemText>Estimated Shipping</SummaryItemText>
@@ -223,7 +208,7 @@ const Cart = () => {
                         </SummaryItem>
                         <SummaryItem type="total">
                             <SummaryItemText>Total</SummaryItemText>
-                            <SummaryItemPrice>$ 180</SummaryItemPrice>
+                            <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
                         </SummaryItem>
                         <Button>CHECKOUT NOW</Button>
                     </Summary>

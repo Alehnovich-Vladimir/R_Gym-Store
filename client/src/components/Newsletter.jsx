@@ -4,7 +4,7 @@ import { mobile } from '../responsive';
 
 const Container = styled.div`
     height: 50vh;
-    background-color: #fcf5f5;
+    background-color: rgba(0,0,0,0.4);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,12 +12,19 @@ const Container = styled.div`
 `
 const Title = styled.h1`
     font-size: 70px;
+    color: #01634df4;
     margin-bottom: 20px;
-    ${mobile({ fontSize: "50px"})}
+    ${mobile({ fontSize: "50px" })}
+    
+    &:hover{
+        text-decoration: underline;
+        cursor: pointer;
+    }
 `
 const Description = styled.div`
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 300;
+    color: white;
     margin-bottom: 20px;
     ${mobile({ textAlign: "center"})}
 `
@@ -27,13 +34,14 @@ const InputContainer = styled.div`
     background-color: white;
     display: flex;
     justify-content: space-between;
-    border: 1px solid lightgrey;
+    border: 2px solid lightgrey;
     border-radius: 5px;
     ${mobile({ width: "80%"})}
 
 `
 const Input = styled.input`
     border: none;
+    outline: none;
     flex: 8;
     padding-left: 20px;
     font-size: 20px;
@@ -41,10 +49,17 @@ const Input = styled.input`
 const Button = styled.button`
     flex: 1;
     border: none;
-    background-color: teal;
+    background-color: #01634df4;
     color: white;
     padding-top: 7px;
     border-radius: 5px;
+    cursor: pointer;
+
+    &:hover{
+        color: #01634df4;
+        background-color: gray;
+        transition: all 0.9s ease;
+    }
 `
 
 const Newsletter = () => {

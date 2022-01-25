@@ -17,20 +17,26 @@ const Container = styled.div`
 const Arrow = styled.div`
     width: 50px;
     height: 50px;
-    background-color: #fff7f7;
+    background-color: #ccc;
     border-radius: 50%;
+    border: 1px solid gray;
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
     top: 0;
     bottom: 0;
-    left: ${props => props.direction === "left" && "10px"};
-    right: ${props => props.direction === "right" && "10px"};
+    left: ${props => props.direction === "left" && "15px"};
+    right: ${props => props.direction === "right" && "15px"};
     margin: auto;
     cursor: pointer;
     opacity: 0.7;
     z-index: 2;
+
+    &:hover {
+        background-color: black;
+        color: white;
+    }
 `
 
 const Wrapper = styled.div`
@@ -62,18 +68,27 @@ const InfoContainer = styled.div`
 
 const Title = styled.h1`
     font-size: 70px;
+    color: #01634df4;
 `
 const Desc = styled.p`
     margin: 50px 0px;
     font-size: 20px;
+    color: gray;
     font-weight: 500;
     letter-spacing: 2px;
 `
 const Button = styled.button`
     padding: 10px;
     font-size: 20px;
-    background-color: transparent;
+    color: white;
+    border-radius: 10px;
+    background-color: gray;
     cursor: pointer;
+
+    &:hover{
+        color: black;
+        background-color: white;
+    }
 `
 
 const Slider = () => {
@@ -97,14 +112,14 @@ const Slider = () => {
                 {sliderItems.map((item) => (
                     <Slide bg={item.bg} key={item.id}>
                     <ImgContainer>
-                       <Image src={item.img} />
+                        <Image src={item.img} />
                     </ImgContainer>
-                     <InfoContainer>
+                    <InfoContainer>
                             <Title>{item.title}</Title>
                             <Desc>{item.desc}</Desc>
-                         <Button>SHOW NOW</Button>
-                   </InfoContainer>
-                 </Slide>
+                        <Button>SHOW NOW</Button>
+                    </InfoContainer>
+                </Slide>
                 ))} 
             </Wrapper>
             <Arrow direction="right" onClick={() => handleClick("right")}>

@@ -10,7 +10,7 @@ const Info = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,0.4);
     z-index: 3;
     display: flex;
     align-items: center;
@@ -32,6 +32,8 @@ const Container = styled.div`
 
     &:hover ${Info}{
         opacity: 1;
+        border-radius: 30px;
+        background-color: rgba(0,0,0,0.5);
     }
 `
 
@@ -57,12 +59,12 @@ const Icon = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 10px;
+    margin: 15px;
     transition: all 0.5s ease;
     
     &:hover{
-        background-color: #e9f5f5;
-        transform: scale(1.3);
+        color: black;
+        transform: scale(1.4);
     }
 `
 

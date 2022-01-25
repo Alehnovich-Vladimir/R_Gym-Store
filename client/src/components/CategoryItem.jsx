@@ -4,7 +4,7 @@ import { mobile } from '../responsive';
 
 const Container = styled.div`
     flex: 1;
-    margin: 3px;
+    margin: 20px;
     height: 70vh;
     position: relative;
 `
@@ -27,15 +27,31 @@ const Info = styled.div`
 `
 const Title = styled.h1`
     color: white;
+    font-size: 50px;
+    letter-spacing: 5px;
     margin-bottom: 20px;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 0px 80px;
+        transition: all 0.9s ease;
+        border-radius: 10px;
+    }
 `
 const Button = styled.button`
     border: none;
+    border-radius: 5px;
     cursor: pointer;
     padding: 10px;
-    background-color: white;
-    color: gray;
-    font-weight: 600;
+    background-color: rgba(255, 255, 255, 0.6);
+    color: black;
+    font-size: 18px;
+
+    &:hover{
+        color: white;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: all 0.9s ease;
+    }
 
 `
 
@@ -46,7 +62,7 @@ const CategoryItem = ({item}) => {
             <Image src={item.img} />
             <Info>
                 <Title>{item.title}</Title>
-                <Button>SHOP NOW</Button>
+                <Button>GO SHOPPING</Button>
             </Info>
             </Link> 
         </Container>

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { popularProducts } from '../data';
 import Product from './Product';
 import axios from "axios";
 
@@ -9,6 +8,21 @@ const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+`
+const Title = styled.h1`
+    display: inline-block;
+    width: 450px;
+    font-size: 70px;
+    color: #01634df4;
+    padding: 30px;
+
+    &:hover{
+        background-color: rgba(0, 0, 0, 0.4);
+        color: white;
+        padding: 30px 80px;
+        transition: all 0.9s ease;
+        border-radius: 10px;
+    }
 `
 
 const Products = ({ cat, filters, sort }) => {
@@ -57,6 +71,8 @@ const Products = ({ cat, filters, sort }) => {
     }, [sort]);
 
     return (
+        <>
+            <Title>Our products :</Title>
         <Container>
             {cat
                 ? filteredProducts.map((item) => <Product key={item.id} item={item} />)
@@ -64,6 +80,8 @@ const Products = ({ cat, filters, sort }) => {
                     .slice(0, 8)
                     .map((item) => <Product key={item.id} item={item} />)}
         </Container>
+        </>
+        
     );
 };
 

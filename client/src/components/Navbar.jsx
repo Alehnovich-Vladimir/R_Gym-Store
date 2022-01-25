@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Container = styled.div`
-    height: 60px;
+    height: 70px;
     ${mobile({ height: "50px" })}
 `
 
@@ -25,23 +25,33 @@ const Left = styled.div`
     align-items: center;
 `
 const Language = styled.span`
-    font-size: 14px;
+    font-size: 16px;
+    border: 2px solid #01634df4;
+    border-radius: 8px;
+    padding: 4px;
     cursor: pointer;
+
+    &:hover{
+        background-color: #01634df4;
+        color: #fff;
+    }
     ${mobile({display: "none"})}
 `
 
 const SearchContainer = styled.div`
-    border: 0.5px solid lightgrey;
-    border-radius: 10px;
+    border: 2px solid #01634df4;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     margin-left: 25px;
-    padding: 5px;
+    padding: 3px;
     ${mobile({ marginLeft: "10px", padding: "1px"})}
 ` 
 
 const Input = styled.input`
     border: none;
+    outline: none;
+    font-size: 18px;
     ${mobile({ width: "50px"})}
 `
 
@@ -51,6 +61,14 @@ const Center = styled.div`
 `
 const Logo = styled.h1`
     font-weight: bold;
+    font-size: 48px;
+    color: #01634df4;
+    cursor: pointer;
+
+    &:hover{
+        text-decoration: underline;
+        transform: rotate(-5deg)
+    }
     ${mobile({fontSize: "14px"})}
 `
 
@@ -63,10 +81,11 @@ const Right = styled.div`
 `
 
 const MenuItem = styled.div`
-    font-size: 14px;
+    font-size: 18px;
+    color: #01634df4;
     cursor: pointer;
-    margin-left: 25px;
-    ${mobile({ fontSize: "12px", marginLeft: "10px"})}
+    margin-right: 20px;
+    ${mobile({ fontSize: "12px", marginRight: "10px"})}
 `
 
 const Navbar = () => {
@@ -76,7 +95,7 @@ const Navbar = () => {
         <Container>
             <Wrapper>
                 <Left>
-                    <Language>RU</Language>
+                    <Language>EN</Language>
                     <SearchContainer>
                         <Input placeholder="Search"/> 
                         <Search style={{color:"gray", fontSize:16}}/>
