@@ -5,6 +5,12 @@ import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import { mobile } from '../responsive';
 import { useSelector } from 'react-redux';
+import StripeCheckout from 'react-stripe-checkout';
+import { useEffect, useState } from 'react';
+import { userRequest } from '../requestMethods';
+import { useHistory } from 'react-router-dom';
+
+const KEY = process.env.REACT_APP_STRIPE;
 
 const Container = styled.div`
 
@@ -152,7 +158,25 @@ const Button = styled.button`
 `
 
 const Cart = () => {
-    const cart = useSelector(state=>state.cart)
+    const cart = useSelector(state => state.cart)
+    const [stripeToken, setStripeToken] = useState(null)
+    const history = useHistory()
+
+    const onToken = (token) => {
+        setStripeToken(token)
+    }
+    useEffect(() => {
+        const makeRequest = async () => {
+            try {
+                const res = await userRequest.post("/checkout/payment", {
+                    tokenId: stripeToken.id,
+                    amount: 500,
+                });
+                history.push("/success", { data: res.data });
+            } catch { }
+        };
+        stripeToken && makeRequest();
+    }, [stripeToken, cart.total, history]);
     return (
         <Container>
             <Navbar />
@@ -210,7 +234,18 @@ const Cart = () => {
                             <SummaryItemText>Total</SummaryItemText>
                             <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
                         </SummaryItem>
-                        <Button>CHECKOUT NOW</Button>
+                        <StripeCheckout
+                            name="R_Gym-store"
+                            image="https://i.ibb.co/0JsbxLL/Pay-logo.png"
+                            billingAddress
+                            shippingAddress
+                            description={`Your total is $${cart.total}`}
+                            amount={cart.total*100}
+                            token={onToken}
+                            stripeKey={KEY}
+                        >
+                            <Button>CHECKOUT NOW</Button>
+                        </StripeCheckout>
                     </Summary>
                 </Bottom>
             </Wrapper>

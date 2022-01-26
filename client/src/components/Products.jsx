@@ -15,13 +15,15 @@ const Title = styled.h1`
     font-size: 70px;
     color: #01634df4;
     padding: 30px;
+    text-shadow: 4px -5px 4px gray;
 
     &:hover{
-        background-color: rgba(0, 0, 0, 0.4);
+        background-color: rgba(0, 0, 0, 0.2);
         color: white;
-        padding: 30px 80px;
-        transition: all 0.9s ease;
+        padding: 30px 40px;
+        transition: all 0.7s ease;
         border-radius: 10px;
+        text-shadow: 4px -5px 4px black;
     }
 `
 

@@ -59,16 +59,14 @@ const Center = styled.div`
     flex: 1;
     text-align: center;
 `
+
 const Logo = styled.h1`
     font-weight: bold;
     font-size: 48px;
-    color: #01634df4;
+    color: #000000c7;
     cursor: pointer;
-
-    &:hover{
-        text-decoration: underline;
-        transform: rotate(-5deg)
-    }
+    text-shadow: 7px -4px 3px grey;
+    text-decoration: none;
     ${mobile({fontSize: "14px"})}
 `
 
@@ -102,7 +100,7 @@ const Navbar = () => {
                     </SearchContainer>
                 </Left>
                 <Center>
-                    <Logo>R-Gym Store</Logo>
+                    <Logo>R-Gym Store</Logo>   
                 </Center>
                 <Right>
                     <MenuItem>Register</MenuItem>
