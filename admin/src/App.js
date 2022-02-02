@@ -1,6 +1,6 @@
 import Sidebar from "./components/sidebar/Sidebar";
 import Topbar from "./components/topbar/Topbar";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import './App.css';
 import Home from "./pages/home/Home";
 import UserList from "./pages/userList/UserList";
@@ -12,13 +12,16 @@ import NewProduct from "./pages/newProduct/NewProduct";
 import Login from "./pages/login/Login";
 
 function App() {
+  const admin = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser.isAdmin;
   return (
     <Router>
       <Switch>
         <Route path="/login">
           <Login />
         </Route>
-        <Topbar />
+        {admin && (
+          <>
+            <Topbar />
         <div className="container">
           <Sidebar />
           <Route exact path="/">
@@ -42,7 +45,9 @@ function App() {
           <Route path="/newproduct">
             <NewProduct />
           </Route>
-        </div>
+          </div>
+        </>
+        )}
       </Switch>
     </Router>
   );

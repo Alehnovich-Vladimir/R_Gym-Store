@@ -35,7 +35,7 @@
 }
 
 .widgetLgDate,.widgetLgAmount{
-    font-weight: 300;
+    font-weight: 400;
 }
 
 .widgetLgButton{
@@ -45,17 +45,17 @@
     cursor: pointer;
 }
 
-.widgetLgButton.Approved{
+.widgetLgButton.approved{
     background-color: #e5faf2;
     color: #3bb077;
 }
 
-.widgetLgButton.Declined{
+.widgetLgButton.declined{
     background-color: #fff0f1;
     color: #d95087;
 }
 
-.widgetLgButton.Pending{
-    background-color: #ebf1fe;
+.widgetLgButton.pending{
+    background-color: #fff0f1;
     color: #2a7ade;
 }
