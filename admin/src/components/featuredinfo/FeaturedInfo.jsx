@@ -26,7 +26,7 @@ export default function FeaturedInfo() {
                     <span className="featuredMoney">$ {income[1]?.total}</span>
                     <span className="featuredMoneyRate">
                         %{Math.floor(percent)}{" "}
-                        {percent < 0 ? (
+                        {percent < 0 ?(
                             <ArrowDownward className="featuredIcon negative" />
                         ) : (
                             <ArrowUpward className="featuredIcon" />    
