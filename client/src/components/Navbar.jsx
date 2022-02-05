@@ -65,7 +65,7 @@ const Logo = styled.h1`
     font-size: 48px;
     color: #000000c7;
     cursor: pointer;
-    text-shadow: 7px -4px 3px grey;
+    text-shadow: 4px -1px 3px grey;
     text-decoration: none;
     ${mobile({fontSize: "14px"})}
 `
@@ -100,7 +100,7 @@ const Navbar = () => {
                     </SearchContainer>
                 </Left>
                 <Center>
-                    <Logo>R-Gym Store</Logo>   
+                    <Logo>R-Gym Store</Logo>  
                 </Center>
                 <Right>
                     <MenuItem>Register</MenuItem>

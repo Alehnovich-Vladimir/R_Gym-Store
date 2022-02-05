@@ -101,8 +101,8 @@ const Footer = () => {
             <Left>
                 <Logo src="https://i.ibb.co/c8Yr0GB/logo.jpg"/>
                 <Desc>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt officia quasi ea corrupti asperiores
-                    repellendus voluptatum optio quae ab ipsum, aspernatur illum sit at quaerat minus inventore magni placeat quisquam.
+                    For any questions that arise when using our online store, you can contact these links on social networks.
+                    As soon as possible, our representative will contact you to solve your problems. Thank you for choosing us...
                 </Desc>
                 <SocialContainer>
                     <SocialIcon color="55ACEE">

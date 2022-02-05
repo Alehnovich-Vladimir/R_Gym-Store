@@ -34,6 +34,7 @@ const TopButton = styled.button`
     padding: 10px;
     font-weight: 600;
     cursor: pointer;
+    border-radius: 5px;
     border: ${props => props.type === "filled" && "none"};
     background-color: ${props => props.type === "filled" ? "black" : "transparent"};
     color: ${props => props.type === "filled" && "white"};
@@ -151,10 +152,16 @@ const SummaryItemPrice = styled.span`
 const Button = styled.button`
     width: 100%;
     padding: 10px;
+    border-radius: 5px;
+    border: none;
     background-color: black;
     color: white;
     font-weight: 600;
     cursor: pointer;
+
+    &:hover{
+        background-color: #01634df4;
+    }
 `
 
 const Cart = () => {
@@ -186,10 +193,10 @@ const Cart = () => {
                 <Top>
                     <TopButton>CONTINUE SHOPPING</TopButton>
                     <TopTexts>
-                        <TopText>Shopping Bag(2)</TopText>
+                        <TopText>Shopping Bag({cart.quantity})</TopText>
                         <TopText>Your Wishlist(0)</TopText>
                     </TopTexts>
-                    <TopButton type="filled">CHECKOUT NOW</TopButton>
+                    <TopButton type="filled">ASK A QUESTION</TopButton>
                 </Top>
                 <Bottom>
                     <Info>

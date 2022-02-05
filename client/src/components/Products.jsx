@@ -12,18 +12,16 @@ const Container = styled.div`
 const Title = styled.h1`
     display: inline-block;
     width: 450px;
-    font-size: 70px;
+    font-size: 60px;
     color: #01634df4;
     padding: 30px;
-    text-shadow: 4px -5px 4px gray;
+    text-shadow: 3px -1px 3px gray;
 
     &:hover{
         background-color: rgba(0, 0, 0, 0.2);
         color: white;
-        padding: 30px 40px;
-        transition: all 0.7s ease;
         border-radius: 10px;
-        text-shadow: 4px -5px 4px black;
+        text-shadow: 3px -1px 3px black;
     }
 `
 
@@ -74,7 +72,7 @@ const Products = ({ cat, filters, sort }) => {
 
     return (
         <>
-            <Title>Our products :</Title>
+            <Title>Our products:</Title>
         <Container>
             {cat
                 ? filteredProducts.map((item) => <Product key={item.id} item={item} />)

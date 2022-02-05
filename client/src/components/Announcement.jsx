@@ -7,14 +7,15 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 500;
+    word-spacing: 7px;
 `
 
 const Announcement = () => {
     return (
         <Container>
-        Super deal !!! - Free Shopping on Orders Over $50 
+        Welcome to my first Online Store!!!
         </Container>
     )
 }
