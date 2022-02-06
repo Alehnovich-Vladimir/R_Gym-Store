@@ -4,15 +4,22 @@ import ProductList from "./pages/ProductList";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import Success from "./pages/Success";
+import ScrollToTop from "./components/ScrollToTop";
 import { useSelector } from "react-redux";
-
 
 const App = () => {
   const user = useSelector((state) => state.user.currentUser);
+
   return (
     <Router>
+      <ScrollToTop></ScrollToTop>
       <Switch>
         <Route exact path="/">
           <Home />
@@ -29,11 +36,9 @@ const App = () => {
         <Route path="/success">
           <Success />
         </Route>
-        <Route path="/login">
-          {user ? <Redirect to="/" /> : <Login />}
-        </Route>
+        <Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
         <Route path="/register">
-          {user ? <Redirect to="/"/> : <Register/>}
+          {user ? <Redirect to="/" /> : <Register />}
           <Register />
         </Route>
       </Switch>
