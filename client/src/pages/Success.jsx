@@ -44,7 +44,7 @@ const Title = styled.div`
 `;
 
 const Button = styled.button`
-  width: 60%;
+  width: 100%;
   border: none;
   border-radius: 10px;
   cursor: pointer;
