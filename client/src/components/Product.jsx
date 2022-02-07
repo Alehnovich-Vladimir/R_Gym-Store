@@ -7,6 +7,11 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { mobile } from "../responsive";
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+`;
+
 const Info = styled.div`
   opacity: 0;
   width: 100%;
@@ -83,9 +88,9 @@ const Product = ({ item }) => {
           <ShoppingCartOutlined />
         </Icon>
         <Icon>
-          <Link to={`/product/${item._id}`}>
+          <StyledLink to={`/product/${item._id}`}>
             <SearchOutlined />
-          </Link>
+          </StyledLink>
         </Icon>
         <Icon>
           <FavoriteBorderOutlined />
