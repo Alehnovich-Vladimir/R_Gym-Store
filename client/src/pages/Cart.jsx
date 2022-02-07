@@ -1,14 +1,12 @@
-import { Add, Remove } from "@material-ui/icons";
 import styled from "styled-components";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { mobile } from "../responsive";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 import { useEffect, useState } from "react";
 import { userRequest } from "../requestMethods";
-import { addProduct } from "../redux/cartRedux";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
@@ -22,6 +20,7 @@ const Wrapper = styled.div`
 const Title = styled.h1`
   font-weight: 300;
   text-align: center;
+  ${mobile({fontSize: "22px"})}
 `;
 const Top = styled.div`
   display: flex;
@@ -39,6 +38,7 @@ const TopButton = styled.button`
   background-color: ${(props) =>
     props.type === "filled" ? "black" : "transparent"};
   color: ${(props) => props.type === "filled" && "white"};
+  ${mobile({display: "none" })}
 `;
 
 const TopTexts = styled.div`
@@ -71,6 +71,7 @@ const ProductDetail = styled.div`
 `;
 const Image = styled.img`
   width: 250px;
+  ${mobile({width: "190px"})}
 `;
 const Details = styled.div`
   padding: 20px;
@@ -78,15 +79,19 @@ const Details = styled.div`
   flex-direction: column;
   justify-content: space-around;
 `;
-const ProductName = styled.span``;
+const ProductName = styled.span`
+  ${mobile({marginBottom: "10px"})}
+`;
 const ProductDesc = styled.span`
   width: 250px;
+  ${mobile({ width: "120px", marginBottom: "10px"})}
 `;
 const ProductColor = styled.div`
   width: 20px;
   height: 20px;
   border-radius: 50%;
   background-color: ${(props) => props.color};
+  ${mobile({marginBottom: "10px"})}
 `;
 const ProductSize = styled.span``;
 const PriceDetail = styled.div`
@@ -105,12 +110,12 @@ const ProductAmountContainer = styled.div`
 const ProductAmount = styled.div`
   font-size: 24px;
   margin: 5px;
-  ${mobile({ margin: "5px 15px" })}
+  ${mobile({ margin: "0px 15px", fontSize: "18px", marginTop: "20px"})}
 `;
 const ProductPrice = styled.div`
   font-size: 30px;
   font-weight: 200;
-  ${mobile({ marginBottom: "20px" })}
+  ${mobile({ marginBottom: "10px", fontSize: "24px" })}
 `;
 
 const Hr = styled.hr`
@@ -156,11 +161,7 @@ const Button = styled.button`
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
-  const dispatch = useDispatch();
-  const addMore = () => {
-    dispatch(addProduct());
-  };
-  const remove = () => {};
+  //const dispatch = useDispatch();
   const [stripeToken, setStripeToken] = useState(null);
   const history = useHistory();
 
@@ -198,7 +199,7 @@ const Cart = () => {
         <Bottom>
           <Info>
             {cart.products.map((product) => (
-              <Product>
+              <Product key={product._id}>
                 <ProductDetail>
                   <Image src={product.img} />
                   <Details>
@@ -219,9 +220,7 @@ const Cart = () => {
                 </ProductDetail>
                 <PriceDetail>
                   <ProductAmountContainer>
-                    <Add onClick={addMore} />
-                    <ProductAmount>{product.quantity}</ProductAmount>
-                    <Remove onClick={remove} />
+                    <ProductAmount>{product.quantity} -pieces</ProductAmount>
                   </ProductAmountContainer>
                   <ProductPrice>
                     $ {product.price * product.quantity}
