@@ -33,7 +33,7 @@ router.post("/login", async (req, res) => {
         const OriginalPassword = hashedPassword.toString(CryptoJS.enc.Utf8);
 
         OriginalPassword !== req.body.password &&
-            res.status(401).json("Wrong credentials!");
+            res.status(401).json("Wrong password!");
         
         const accessToken = jwt.sign( { id: user._id, isAdmin: user.isAdmin }, process.env.JWT_SEC, { expiresIn: "3d" } );
         
