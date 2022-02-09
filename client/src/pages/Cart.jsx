@@ -80,16 +80,19 @@ const Details = styled.div`
   justify-content: space-around;
 `;
 const ProductName = styled.span`
+margin-bottom: 20px;
   ${mobile({marginBottom: "10px"})}
 `;
 const ProductDesc = styled.span`
   width: 250px;
+  margin-bottom: 20px;
   ${mobile({ width: "120px", marginBottom: "10px"})}
 `;
 const ProductColor = styled.div`
   width: 20px;
   height: 20px;
   border-radius: 50%;
+  margin-bottom: 20px;
   background-color: ${(props) => props.color};
   ${mobile({marginBottom: "10px"})}
 `;
@@ -211,6 +214,7 @@ const Cart = () => {
                       <b>Description: </b>
                       {product.desc}
                     </ProductDesc>
+                    <b>Color: </b>
                     <ProductColor color={product.color} />
                     <ProductSize>
                       <b>Size: </b>
@@ -220,7 +224,7 @@ const Cart = () => {
                 </ProductDetail>
                 <PriceDetail>
                   <ProductAmountContainer>
-                    <ProductAmount>{product.quantity} -pieces</ProductAmount>
+                    <ProductAmount>{product.quantity} - pieces</ProductAmount>
                   </ProductAmountContainer>
                   <ProductPrice>
                     $ {product.price * product.quantity}

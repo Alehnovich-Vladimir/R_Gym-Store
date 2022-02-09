@@ -68,7 +68,7 @@ const Success = () => {
       <Wrapper>
         <Title>SUCCESSFUL PAYMENT</Title>
         <Link to="/">
-          <Button>GO HOME PAGE</Button>
+          <Button>GO SHOPPING AGAIN</Button>
         </Link>
       </Wrapper>
     </Container>
